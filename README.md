@@ -26,3 +26,4 @@ Technologies used in the project:
 
 *   JS
 *   React.js
+* MVC design pattern
