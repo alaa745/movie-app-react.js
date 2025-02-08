@@ -1,4 +1,4 @@
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie , onClick }) => {
     const style = {
         borderRadius: "10px",
         width: "inherit",
@@ -10,16 +10,18 @@ const MovieCard = ({ movie }) => {
         alignItems: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
+        position: "relative",
         backgroundImage: `
-        linear-gradient(to top, rgba(72, 70, 70 , 0.88), rgba(176, 19, 19, 0)),
+        
         url(https://image.tmdb.org/t/p/original${movie.poster_path})
       `,
     }
 
     return (
-        <div className="movie-container">
+        <div className="movie-container" onClick={() => onClick(movie.id)}>
             <div style={style}>
-                <h5 style={{color: "white" , padding: "5px"}}>Vote: {movie.vote_average}</h5>
+                <div className="overlay"></div>
+                <h5 style={{ color: "white", padding: "5px" , position: "absolute"}}>Vote: {movie.vote_average}</h5>
             </div>
             <h5 className="text-style">{movie.title}</h5>
         </div>

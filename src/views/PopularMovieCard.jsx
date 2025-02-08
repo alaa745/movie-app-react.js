@@ -1,10 +1,8 @@
-
-
 const PopularMovieCard = ({ movie }) => {
     const style = {
         borderRadius: "10px",
         width: "100%",
-        height: "300px",
+        height: "100%",
         marginTop: "10px",
         display: "flex",
         flexDirection: "column",

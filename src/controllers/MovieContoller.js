@@ -1,5 +1,6 @@
 import axios from "axios";
 import MovieModel from "../models/MovieModel";
+import MovieDetailsModel from "../models/MovieDetailsModel";
 
 class MovieController {
     static baseUrl = "https://api.themoviedb.org/3/movie";
@@ -48,6 +49,21 @@ class MovieController {
 
         } catch (error) {
             //throw custom exception
+            console.log(error);
+        }
+    }
+
+    static async getMovieDetails(movieId) {
+        try {
+            const response = await axios.get(`${this.baseUrl}/${movieId}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${this.authToken}`,
+                        accept: 'application/json',
+                    }
+                });
+            return new MovieDetailsModel(response.data);
+        } catch (error) {
             console.log(error);
         }
     }
